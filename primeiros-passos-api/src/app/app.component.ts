@@ -11,19 +11,19 @@ export class AppComponent {
 
   readonly apiURL!: string;
   constructor(private http: HttpClient) {
-    this.apiURL = 'http://localhost:3000';
+    this.apiURL = 'http://localhost:4200';
   }
 
 
   //REQUISIÇÃO GET
   listarTodosProdutos() {
     this.http.get<Produto[]>(`${this.apiURL}/produtos`)
-      .subscribe((resultado: any) => console.log(resultado));
+      .subscribe((resultado) => console.log(resultado));
   }
   //REQUISIÇÃO GET por id
   listarProdutoPorId() {
     this.http.get<Produto>(`${this.apiURL}/produtos/1`)
-      .subscribe((resultado: any) => console.log(resultado),
+      .subscribe((resultado) => console.log(resultado),
         erro => {
           if (erro.status == 404) {
             console.log('Produto não localizado.');
@@ -33,12 +33,13 @@ export class AppComponent {
   }
   //REQUISIÇÃO POST
   adicionarProduto() {
-    var produto =  new Produto();
+    var produto = new Produto();
     produto.nome = "Cadeira Gamer";
+    produto.id = 1;
 
     this.http.post<Produto>(`${this.apiURL}/produtos`, produto)
       .subscribe(
-        (resultado: any) => {
+        (resultado) => {
           console.log(resultado)
         },
         erro => {
@@ -56,7 +57,7 @@ export class AppComponent {
 
     this.http.put(`${this.apiURL}/produtos/1`, produto)
       .subscribe(
-        (resultado: any) => {
+        (resultado) => {
           console.log('Produto alterado com sucesso.')
         },
         erro => {
@@ -75,7 +76,7 @@ export class AppComponent {
   excluirProduto() {
     this.http.delete(`${this.apiURL}/produtos/1`)
       .subscribe(
-        (resultado: any) => {
+        (resultado) => {
           console.log('Produto excluído com sucesso.');
         },
         erro => {

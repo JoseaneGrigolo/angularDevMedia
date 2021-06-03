@@ -1,0 +1,22 @@
+<p>{{ hoje }}</p>
+<p>{{ hoje | date }}</p>
+
+<p>{{ hoje }}</p>
+<p>{{ hoje | date:"dd/MM/yyyy" }}</p>
+
+<p>{{ hoje }}</p>
+<p>{{ hoje | date | uppercase }}</p>
+
+<!--
+  {{ dado | date [ : format [ : timezone [ : locale ] ] ] }}
+  {{ dado | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ]]]] }}
+-->
+
+<p>{{ preco }}</p>
+<p>{{ preco | currency }}</p>
+
+<p>{{ preco }}</p>
+<p>{{ preco | currency:"BRL" }}</p>
+
+<p>{{ hoje }}</p>
+<p>{{ hoje | date:"dd/MMM/yyyy":"IST":"pt" }}</p>
